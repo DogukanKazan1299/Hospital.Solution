@@ -16,5 +16,6 @@ namespace Hospital.Business.Constants
         public static string AddNurse = "added new nurse";
         public static string DeleteNurse = "deleted nurse";
         public static string UpdatedNurse = "update by nurse";
+        public static string AddNurseDto = "nurse dto is added!";
     }
 }

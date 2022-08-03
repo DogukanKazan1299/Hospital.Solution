@@ -1,5 +1,6 @@
 ﻿using Hospital.Business.Abstract;
 using Hospital.Entities.Concrete;
+using Hospital.Entities.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -63,6 +64,18 @@ namespace Hospital.API.Controllers
         public IActionResult UpdateNurse(Nurse nurse)
         {
             var result = _nurseService.Update(nurse);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
+
+
+        [HttpPost("addnursedto")]
+        public IActionResult AddNurse(NurseAddDto nursedto)
+        {
+            var result = _nurseService.AddNurseDto(nursedto);
             if (result.Success)
             {
                 return Ok(result.Message);

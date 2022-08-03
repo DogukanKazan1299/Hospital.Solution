@@ -1,5 +1,6 @@
 ﻿using Hospital.Core.Utilities.Results;
 using Hospital.Entities.Concrete;
+using Hospital.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace Hospital.Business.Abstract
         IResult Add(Nurse nurse);
         IResult Update(Nurse nurse);
         IResult Delete(Nurse nurse);
+        IResult AddNurseDto(NurseAddDto nurseAddDto);
     }
 }

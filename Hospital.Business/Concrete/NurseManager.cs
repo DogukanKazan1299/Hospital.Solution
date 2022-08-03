@@ -3,6 +3,7 @@ using Hospital.Business.Constants;
 using Hospital.Core.Utilities.Results;
 using Hospital.DataAccess.Abstract;
 using Hospital.Entities.Concrete;
+using Hospital.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,19 @@ namespace Hospital.Business.Concrete
         {
             _nurseDal.Add(nurse);
             return new SuccessResult(Messages.AddNurse);
+        }
+
+        public IResult AddNurseDto(NurseAddDto nurseAddDto)
+        {
+            _nurseDal.Add(new Nurse
+            {
+                Name = nurseAddDto.Name,
+                Surname = nurseAddDto.Surname,
+                Region=nurseAddDto.Region,
+                Gender=nurseAddDto.Gender,
+                Description=nurseAddDto.Description
+            });
+            return new SuccessResult(Messages.AddNurseDto);
         }
 
         public IResult Delete(Nurse nurse)
