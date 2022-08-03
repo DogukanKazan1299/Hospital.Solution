@@ -17,6 +17,9 @@ namespace Hospital.Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<DoctorManager>().As<IDoctorService>();
             builder.RegisterType<EfDoctorDal>().As<IDoctorDal>();
+
+            builder.RegisterType<NurseManager>().As<INurseService>();
+            builder.RegisterType<EfNurseDal>().As<INurseDal>();
         }
     }
 }

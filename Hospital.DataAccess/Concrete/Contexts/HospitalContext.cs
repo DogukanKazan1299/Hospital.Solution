@@ -15,5 +15,6 @@ namespace Hospital.DataAccess.Concrete.Contexts
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-J2VMIPA; Database=HospitalDatabaseServer; integrated security=true");
         }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Nurse> Nurses { get; set; }
     }
 }
