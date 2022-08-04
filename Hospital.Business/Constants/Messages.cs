@@ -17,5 +17,6 @@ namespace Hospital.Business.Constants
         public static string DeleteNurse = "deleted nurse";
         public static string UpdatedNurse = "update by nurse";
         public static string AddNurseDto = "nurse dto is added!";
+        public static string ErrorNurseListDto = "nurse list dto is failed";
     }
 }

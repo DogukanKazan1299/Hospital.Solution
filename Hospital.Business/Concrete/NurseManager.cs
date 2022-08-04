@@ -54,10 +54,25 @@ namespace Hospital.Business.Concrete
             return new SuccessDataResult<Nurse>(_nurseDal.GetById(x => x.Id == id));
         }
 
+        public IDataResult<NurseListDto> GetNurseListDto()
+        {
+            var nurses = _nurseDal.GetList();
+            if (nurses.Count > -1)
+            {
+                return new SuccessDataResult<NurseListDto>(new NurseListDto
+                {
+                    Nurses = nurses
+                });
+            }
+            return new ErrorDataResult<NurseListDto>(Messages.ErrorNurseListDto);
+        }
+
         public IResult Update(Nurse nurse)
         {
             _nurseDal.Update(nurse);
             return new SuccessResult(Messages.UpdatedNurse);
         }
+
+        
     }
 }

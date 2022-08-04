@@ -14,6 +14,7 @@ namespace Hospital.Business.Automapper.Profiles
         public NurseProfile()
         {
             CreateMap<NurseAddDto, Nurse>();
+            CreateMap<NurseListDto, Nurse>();
             /*
             CreateMap<NurseAddDto, Nurse>().ForMember(dest=>dest.Gender,opt=>opt.MapFrom(x=>"Veri Yok"));
             CreateMap<NurseAddDto, Nurse>().ForMember(dest => dest.Description, opt => opt.MapFrom(x => "Veri Yok"));

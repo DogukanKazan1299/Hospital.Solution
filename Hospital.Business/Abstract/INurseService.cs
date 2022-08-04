@@ -17,5 +17,6 @@ namespace Hospital.Business.Abstract
         IResult Update(Nurse nurse);
         IResult Delete(Nurse nurse);
         IResult AddNurseDto(NurseAddDto nurseAddDto);
+        IDataResult<NurseListDto> GetNurseListDto();
     }
 }

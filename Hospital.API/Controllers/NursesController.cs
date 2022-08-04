@@ -82,5 +82,16 @@ namespace Hospital.API.Controllers
             }
             return BadRequest(result.Message);
         }
+
+        [HttpGet("getnurselistdto")]
+        public IActionResult GetNurseListDto()
+        {
+            var result = _nurseService.GetNurseListDto();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
     }
 }
