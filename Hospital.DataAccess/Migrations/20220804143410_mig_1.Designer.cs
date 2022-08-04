@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital.DataAccess.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    [Migration("20220803202349_mig_1")]
+    [Migration("20220804143410_mig_1")]
     partial class mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,4 +1,5 @@
-﻿using Hospital.Entities.Concrete;
+﻿using Hospital.DataAccess.Configurations;
+using Hospital.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Hospital.DataAccess.Concrete.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-J2VMIPA; Database=HospitalDatabaseServer; integrated security=true");
+            optionsBuilder.UseSqlServer(Configuration.ConnectionString);
         }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Nurse> Nurses { get; set; }
