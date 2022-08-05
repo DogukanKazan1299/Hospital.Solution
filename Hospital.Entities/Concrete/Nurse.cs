@@ -11,6 +11,7 @@ namespace Hospital.Entities.Concrete
     {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string TelNR { get; set; }
         public int Salary { get; set; }
         public string Gender { get; set; }
         public string Region { get; set; }

@@ -25,7 +25,7 @@ namespace Hospital.Business.Concrete
         [ValidationAspect(typeof(PatientValidator))]
         public IResult Add(Patient patient)
         {
-            IResult result = BusinessRules.Run(CheckTCKN(patient.TCKN),RegexTCKN(patient.TCKN));
+            IResult result = BusinessRules.Run(CheckTCKN(patient.TCKN),RegexTCKN(patient.TCKN),CheckTelNR(patient.TelNR));
             if(result != null)
             {
                 return result;
@@ -73,7 +73,7 @@ namespace Hospital.Business.Concrete
             }
             return new SuccessResult();
         }
-
+        
         private IResult RegexTCKN(string TCKN)
         {
             Regex regex = new Regex(@"^\d+$");
@@ -86,7 +86,18 @@ namespace Hospital.Business.Concrete
             return new SuccessResult();
         }
 
-        
+        private IResult CheckTelNR(string TelNR)
+        {
+            Regex regex = new Regex(@"^05");
+            Match match = regex.Match(TelNR);
+            if (!match.Success)
+            {
+                return new ErrorResult(Messages.TelNRError);
+            }
+            return new SuccessResult();
+        }
+
+
     }
 
 

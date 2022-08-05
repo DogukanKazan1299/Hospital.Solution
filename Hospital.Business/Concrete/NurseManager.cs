@@ -1,5 +1,6 @@
 ﻿using Hospital.Business.Abstract;
 using Hospital.Business.Constants;
+using Hospital.Core.Utilities.Business;
 using Hospital.Core.Utilities.Results;
 using Hospital.DataAccess.Abstract;
 using Hospital.Entities.Concrete;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Hospital.Business.Concrete
@@ -21,6 +23,11 @@ namespace Hospital.Business.Concrete
         }
         public IResult Add(Nurse nurse)
         {
+            IResult result = BusinessRules.Run(CheckTelNR(nurse.TelNR));
+            if (result != null)
+            {
+                return result;
+            }
             _nurseDal.Add(nurse);
             return new SuccessResult(Messages.AddNurse);
         }
@@ -73,6 +80,17 @@ namespace Hospital.Business.Concrete
             return new SuccessResult(Messages.UpdatedNurse);
         }
 
-        
+        private IResult CheckTelNR(string TelNR)
+        {
+            Regex regex = new Regex(@"^05");
+            Match match = regex.Match(TelNR);
+            if (!match.Success)
+            {
+                return new ErrorResult(Messages.TelNRError);
+            }
+            return new SuccessResult();
+        }
+
+
     }
 }

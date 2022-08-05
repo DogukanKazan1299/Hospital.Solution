@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital.DataAccess.Migrations
 {
     [DbContext(typeof(HospitalContext))]
-    [Migration("20220805120714_mig_1")]
+    [Migration("20220805180704_mig_1")]
     partial class mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,10 @@ namespace Hospital.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -89,6 +93,10 @@ namespace Hospital.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -139,6 +147,10 @@ namespace Hospital.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TCKN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

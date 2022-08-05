@@ -48,6 +48,10 @@ namespace Hospital.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TelNR")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -87,6 +91,10 @@ namespace Hospital.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -137,6 +145,10 @@ namespace Hospital.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TCKN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelNR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

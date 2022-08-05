@@ -25,5 +25,6 @@ namespace Hospital.Business.Constants
 
         public static string TCKNIsAlreadyExists = "This TCKN is already exists";
         public static string TCKNError = "TCKN error";
+        public static string TelNRError = "TelNumber Error\nThey are started to : 05";
     }
 }

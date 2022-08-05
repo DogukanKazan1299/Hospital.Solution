@@ -13,6 +13,7 @@ namespace Hospital.Entities.Concrete
         public string Surname { get; set; }
         public string Region { get; set; }
         public int Salary { get; set; }
+        public string TelNR { get; set; }
 
     }
 }
