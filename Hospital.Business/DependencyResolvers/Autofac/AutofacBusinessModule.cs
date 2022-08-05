@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using Hospital.Business.Abstract;
 using Hospital.Business.Concrete;
+using Hospital.Core.Utilities.Interceptors;
 using Hospital.DataAccess.Abstract;
 using Hospital.DataAccess.Concrete.EntityFramework;
 using System;
@@ -23,6 +26,14 @@ namespace Hospital.Business.DependencyResolvers.Autofac
 
             builder.RegisterType<PatientManager>().As<IPatientService>();
             builder.RegisterType<EfPatientDal>().As<IPatientDal>();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()//Aspect var mı kontrolü 
+                }).SingleInstance();
         }
     }
 }

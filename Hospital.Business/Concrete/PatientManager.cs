@@ -1,5 +1,7 @@
 ﻿using Hospital.Business.Abstract;
 using Hospital.Business.Constants;
+using Hospital.Business.ValidationRules.FluentValidation;
+using Hospital.Core.Aspects.Autofac.Validation;
 using Hospital.Core.Utilities.Results;
 using Hospital.DataAccess.Abstract;
 using Hospital.Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Hospital.Business.Concrete
         {
             _patientDal = patientDal;
         }
+        [ValidationAspect(typeof(PatientValidator))]
         public IResult Add(Patient patient)
         {
             _patientDal.Add(patient);
