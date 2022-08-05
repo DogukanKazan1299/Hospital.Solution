@@ -69,5 +69,16 @@ namespace Hospital.API.Controllers
             }
             return BadRequest(result.Message);
         }
+
+        [HttpGet("getbyTCKN")]
+        public IActionResult GetByTCKN(string TCKN)
+        {
+            var result = _patientService.GetByTCKN(TCKN);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
     }
 }

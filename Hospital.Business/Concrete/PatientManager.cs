@@ -40,10 +40,22 @@ namespace Hospital.Business.Concrete
             return new SuccessDataResult<Patient>(_patientDal.GetById(x => x.Id == id));
         }
 
+        //TCKN getPatient
+        public IDataResult<Patient> GetByTCKN(string TCKN)
+        {
+            return new SuccessDataResult<Patient>(_patientDal.GetById(x => x.TCKN == TCKN));
+        }
+
         public IResult Update(Patient patient)
         {
             _patientDal.Update(patient);
             return new SuccessResult(Messages.UpdatePatient);
         }
+
+
+
+        
     }
+
+
 }

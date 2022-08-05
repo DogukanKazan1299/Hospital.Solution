@@ -15,5 +15,6 @@ namespace Hospital.Business.Abstract
         IResult Add(Patient patient);
         IResult Update(Patient patient);
         IResult Delete(Patient patient);
+        IDataResult<Patient> GetByTCKN(string TCKN);
     }
 }
