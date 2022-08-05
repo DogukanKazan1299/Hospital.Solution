@@ -2,6 +2,7 @@
 using Hospital.Business.Constants;
 using Hospital.Business.ValidationRules.FluentValidation;
 using Hospital.Core.Aspects.Autofac.Validation;
+using Hospital.Core.Utilities.Business;
 using Hospital.Core.Utilities.Results;
 using Hospital.DataAccess.Abstract;
 using Hospital.Entities.Concrete;
@@ -23,6 +24,11 @@ namespace Hospital.Business.Concrete
         [ValidationAspect(typeof(PatientValidator))]
         public IResult Add(Patient patient)
         {
+            IResult result = BusinessRules.Run(CheckTCKN(patient.TCKN));
+            if(result != null)
+            {
+                return result;
+            }
             _patientDal.Add(patient);
             return new SuccessResult(Messages.AddNewPatient);
         }
@@ -56,6 +62,16 @@ namespace Hospital.Business.Concrete
         }
 
 
+        //Aynı TCKN 'ye sahip 2 kişi olamaz.
+        private IResult CheckTCKN(string TCKN)
+        {
+            var result = _patientDal.GetList(x => x.TCKN == TCKN).Any();
+            if (result)
+            {
+                return new ErrorResult(Messages.TCKNIsAlreadyExists);
+            }
+            return new SuccessResult();
+        }
 
         
     }

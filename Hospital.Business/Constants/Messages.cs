@@ -22,5 +22,7 @@ namespace Hospital.Business.Constants
         public static string AddNewPatient = "new patient added";
         public static string DeletePatient = "deleted patient";
         public static string UpdatePatient = "updated by patient";
+
+        public static string TCKNIsAlreadyExists = "This TCKN is already exists";
     }
 }
