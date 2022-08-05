@@ -24,5 +24,6 @@ namespace Hospital.Business.Constants
         public static string UpdatePatient = "updated by patient";
 
         public static string TCKNIsAlreadyExists = "This TCKN is already exists";
+        public static string TCKNError = "TCKN error";
     }
 }

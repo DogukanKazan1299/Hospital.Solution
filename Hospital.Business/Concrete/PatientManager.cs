@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Hospital.Business.Concrete
@@ -24,7 +25,7 @@ namespace Hospital.Business.Concrete
         [ValidationAspect(typeof(PatientValidator))]
         public IResult Add(Patient patient)
         {
-            IResult result = BusinessRules.Run(CheckTCKN(patient.TCKN));
+            IResult result = BusinessRules.Run(CheckTCKN(patient.TCKN),RegexTCKN(patient.TCKN));
             if(result != null)
             {
                 return result;
@@ -69,6 +70,18 @@ namespace Hospital.Business.Concrete
             if (result)
             {
                 return new ErrorResult(Messages.TCKNIsAlreadyExists);
+            }
+            return new SuccessResult();
+        }
+
+        private IResult RegexTCKN(string TCKN)
+        {
+            Regex regex = new Regex(@"^\d+$");
+
+            Match match = regex.Match(TCKN);
+            if (!match.Success)
+            {
+                return new ErrorResult(Messages.TCKNError);
             }
             return new SuccessResult();
         }
